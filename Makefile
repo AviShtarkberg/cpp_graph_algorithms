@@ -9,7 +9,7 @@ ST=Graph.cpp Algorithms.cpp TestCounter.cpp Test.cpp
 OD=$(subst .cpp,.o,$(SD))
 OT=$(subst .cpp,.o,$(ST))
 
-.PHONY: all run demo test tidy valgrind clean
+.PHONY: all run demo test valgrind clean
 
 all: demo test
 
@@ -21,9 +21,6 @@ demo: Demo.o $(OD)
 
 test: TestCounter.o Test.o $(OT)
 	$(CXX) $(CXXFLAGS) $^ -o test
-
-tidy:
-	g++-tidy $(st) -checks=bugprone-*,g++-analyzer-*,cppcoreguidelines-*,performance-*,portability-*,readability-*,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-cppcoreguidelines-owning-memory --warnings-as-errors=-* --
 
 valgrind: demo test
 	valgrind --tool=memcheck $(VALGRIND_FLAGS) ./demo 2>&1 | { egrep "lost| at " || true; }
