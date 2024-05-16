@@ -60,7 +60,7 @@ The operators:
   
   16)g1-- operator: will first return the graph and than decrease all the edges by one.
   
-  18)g1 * int operator: will multiply all the edges by the int that you have inserted.
+  18)g1 * int operator: will multiply all the edges by the int that you have inserted.(**)
   
   19)g3 = g1 * g2 operator:will create a new graph that is represented as the matrix of the multiplication of the two adjacency matrixes, notice that
     after the multiplication the diagonal will be filled with zeros becuase self edges are not allowed.
