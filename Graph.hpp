@@ -5,6 +5,22 @@
 using namespace std;
 namespace ariel
 {
+    void check_arg_for_operator(size_t size1, size_t size2, bool dir1, bool dir2);
+
+    vector<vector<int>> matrix_adder(vector<vector<int>> m1, vector<vector<int>> m2, size_t size1);
+
+    vector<vector<int>> matrix_subtractr(vector<vector<int>> m1, vector<vector<int>> m2, size_t size1);
+
+    vector<vector<int>> matrix_multiplication(vector<vector<int>> m1, vector<vector<int>> m2, size_t size1);
+
+    vector<vector<int>> matrix_multiplication(vector<vector<int>> m1, vector<vector<int>> m2, size_t size1);
+
+    bool check_contains(vector<vector<int>> m1, vector<vector<int>> m2, size_t size1);
+
+    bool check_equals(vector<vector<int>> m1, vector<vector<int>> m2, size_t size1);
+
+    void set_diagonal_zeros(vector<vector<int>> &m1, size_t size1);
+
     class Graph
     {
     private:
@@ -26,8 +42,49 @@ namespace ariel
 
         void printGraph();
 
+        void operator+=(Graph const &graph);
+
+        Graph &operator+();
+
+        void operator-=(Graph const &graph);
+
+        Graph &operator-();
+
+        Graph &operator++();
+
+        Graph operator++(int k);
+
+        Graph &operator--();
+
+        Graph operator--(int k);
+
+        Graph operator*(int a);
+
+        friend Graph operator+(const Graph &graph1, const Graph &graph2);
+
+        friend Graph operator-(const Graph &graph1, const Graph &graph2);
+
+        friend Graph operator*(const Graph &graph1, const Graph &graph2);
+
+        friend ostream &operator<<(ostream &os, const Graph &g);
+
+        friend bool operator>(const Graph &graph1, const Graph &graph2);
+
+        friend bool operator==(const Graph &graph1, const Graph &graph2);
+
+        friend bool operator>=(const Graph &graph1, const Graph &graph2);
+
+        friend bool operator<(const Graph &graph1, const Graph &graph2);
+
+        friend bool operator<=(const Graph &graph1, const Graph &graph2);
+
+        friend bool operator!=(const Graph &graph1, const Graph &graph2);
+
+        void print_adjacencyMatrix();
+        
         // inline methodes:
-        vector<vector<int>> get_adjacencyMatrix()
+        vector<vector<int>>
+        get_adjacencyMatrix() const
         {
             return this->adjacencyMatrix;
         }
@@ -42,9 +99,29 @@ namespace ariel
             return this->_has_negative_edge;
         }
 
-        bool get_directed()
+        bool get_directed() const
         {
             return this->_directed;
         }
     };
+
+    ostream &operator<<(ostream &os, const Graph &g);
+
+    Graph operator+(const Graph &graph1, const Graph &graph2);
+
+    Graph operator-(const Graph &graph1, const Graph &graph2);
+
+    Graph operator*(const Graph &graph1, const Graph &graph2);
+
+    bool operator>(const Graph &graph1, const Graph &graph2);
+
+    bool operator==(const Graph &graph1, const Graph &graph2);
+
+    bool operator>=(const Graph &graph1, const Graph &graph2);
+
+    bool operator<(const Graph &graph1, const Graph &graph2);
+
+    bool operator<=(const Graph &graph1, const Graph &graph2);
+
+    bool operator!=(const Graph &graph1, const Graph &graph2);
 }
